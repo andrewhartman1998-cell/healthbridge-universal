@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — HealthBridge Universal</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1e40af;
+      --teal: #0d9488;
+      --blue-light: #eff6ff;
+      --teal-light: #f0fdfa;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: white;
+      padding: 56px 24px 48px;
+      text-align: center;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .logo-icon {
+      width: 48px; height: 48px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .logo-name { font-size: 22px; font-weight: 700; }
+    header h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+    header p { font-size: 15px; opacity: 0.8; max-width: 480px; margin: 0 auto; }
+    .badges {
+      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ── Layout ── */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── TOC ── */
+    .toc-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin: 36px 0;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .toc-card h2 { font-size: 14px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+    .toc-grid a {
+      font-size: 14px; color: var(--blue); text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .toc-grid a:hover { text-decoration: underline; }
+    .toc-grid a::before { content: '→'; font-size: 12px; opacity: 0.6; }
+
+    /* ── Sections ── */
+    .section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .section-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 20px; padding-bottom: 16px;
+      border-bottom: 2px solid var(--blue-light);
+    }
+    .section-num {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      color: white; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+    }
+    .section h2 { font-size: 18px; font-weight: 700; color: var(--text); }
+
+    h3 { font-size: 15px; font-weight: 700; color: var(--blue); margin: 20px 0 10px; }
+    p { font-size: 14px; color: #374151; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 20px; margin-bottom: 12px; }
+    li { font-size: 14px; color: #374151; margin-bottom: 6px; }
+    li strong { color: var(--text); }
+
+    /* ── Highlight boxes ── */
+    .callout {
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 14px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+    .callout.blue { background: var(--blue-light); border-left: 4px solid var(--blue); color: #1e3a8a; }
+    .callout.green { background: #f0fdf4; border-left: 4px solid #16a34a; color: #14532d; }
+    .callout.red { background: #fef2f2; border-left: 4px solid #dc2626; color: #7f1d1d; }
+
+    /* ── Table ── */
+    .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 10px; border: 1px solid var(--border); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { background: #f1f5f9; padding: 10px 14px; text-align: left; font-weight: 700; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+    td { padding: 10px 14px; border-top: 1px solid var(--border); color: #374151; }
+    tr:hover td { background: #fafafa; }
+
+    /* ── Rights grid ── */
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 16px 0; }
+    .right-card { background: var(--blue-light); border-radius: 10px; padding: 14px; }
+    .right-card .right-icon { font-size: 20px; margin-bottom: 6px; }
+    .right-card h4 { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+    .right-card p { font-size: 12px; color: #1e3a8a; margin: 0; }
+
+    /* ── Contact card ── */
+    .contact-card {
+      background: linear-gradient(135deg, var(--blue-light), var(--teal-light));
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 16px;
+    }
+    .contact-card p { margin-bottom: 6px; }
+    .contact-card a { color: var(--blue); font-weight: 600; text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      margin-top: 20px;
+    }
+    footer a { color: var(--blue); text-decoration: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header h1 { font-size: 24px; }
+      .toc-grid { grid-template-columns: 1fr; }
+      .section { padding: 22px 18px; }
+      .rights-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    <div class="logo-icon">❤️</div>
+    <span class="logo-name">HealthBridge Universal</span>
+  </div>
+  <h1>Privacy Policy</h1>
+  <p>We believe your health data belongs to you. Here's exactly how we handle it.</p>
+  <div class="badges">
+    <span class="badge">🔒 HIPAA-Aligned</span>
+    <span class="badge">🇺🇸 CCPA Compliant</span>
+    <span class="badge">🇪🇺 GDPR Aware</span>
+    <span class="badge">Effective June 1, 2026</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Table of Contents -->
+  <div class="toc-card">
+    <h2>Contents</h2>
+    <div class="toc-grid">
+      <a href="#who">1. Who This Applies To</a>
+      <a href="#collect">2. Information We Collect</a>
+      <a href="#use">3. How We Use Your Information</a>
+      <a href="#share">4. How We Share Information</a>
+      <a href="#hipaa">5. HIPAA Compliance</a>
+      <a href="#security">6. Data Security</a>
+      <a href="#retention">7. Data Retention</a>
+      <a href="#rights">8. Your Rights</a>
+      <a href="#children">9. Children's Privacy</a>
+      <a href="#notifications">10. Push Notifications</a>
+      <a href="#changes">11. Policy Changes</a>
+      <a href="#contact">12. Contact Us</a>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <span class="callout-icon">ℹ️</span>
+    <div><strong>Plain-language summary:</strong> We collect only what's needed to provide your healthcare management tools. We never sell your data. Only your care team can see your health information. You can request your data or delete your account at any time.</div>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="section" id="who">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>Who This Policy Applies To</h2>
+    </div>
+    <p>This Privacy Policy applies to all users of HealthBridge Universal, including:</p>
+    <ul>
+      <li><strong>Patients</strong> — individuals using the app to manage their own health information</li>
+      <li><strong>Doctors & Clinicians</strong> — licensed healthcare providers delivering care through the platform</li>
+      <li><strong>Administrators</strong> — healthcare organization staff managing the platform and patient records</li>
+    </ul>
+    <p>By using the Service, you agree to the practices described in this policy.</p>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="section" id="collect">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>Information We Collect</h2>
+    </div>
+
+    <h3>Information You Provide Directly</h3>
+    <ul>
+      <li><strong>Account Information</strong> — name, email address, phone number, date of birth, gender</li>
+      <li><strong>Health Information</strong> — medical records, appointment history, diagnoses, allergies, chronic conditions, prescriptions, lab results, imaging reports, blood type</li>
+      <li><strong>Insurance Information</strong> — insurance provider name and member ID</li>
+      <li><strong>Clinical Notes</strong> — notes, summaries, and content added by your care team</li>
+    </ul>
+
+    <h3>Information Collected Automatically</h3>
+    <ul>
+      <li><strong>Usage Data</strong> — features accessed, pages viewed, actions within the app</li>
+      <li><strong>Device Information</strong> — device type, operating system, app version</li>
+      <li><strong>Log Data</strong> — access timestamps and error logs (no health data in logs)</li>
+    </ul>
+
+    <div class="callout green">
+      <span class="callout-icon">✅</span>
+      <div><strong>We do NOT collect:</strong> Precise geolocation · Contacts or address book · Browsing history outside the app · Financial or payment information · Biometric data (fingerprint, face scan) · Advertising identifiers</div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="section" id="use">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>How We Use Your Information</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Purpose</th><th>Legal Basis</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Providing core healthcare management features</td><td>Performance of contract</td></tr>
+          <tr><td>Sending appointment reminders and notifications</td><td>Legitimate interest / consent</td></tr>
+          <tr><td>Enabling doctors to access patient records for care</td><td>Performance of contract</td></tr>
+          <tr><td>Improving app performance and fixing bugs</td><td>Legitimate interest</td></tr>
+          <tr><td>Complying with legal obligations</td><td>Legal obligation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout red">
+      <span class="callout-icon">🚫</span>
+      <div><strong>We never use your health data for advertising, behavioral profiling, or sale to third parties.</strong></div>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="section" id="share">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>How We Share Your Information</h2>
+    </div>
+    <h3>Within Your Care Team</h3>
+    <p>Your health information is shared within the app only with healthcare providers and administrators at your organization who are authorized to access it as part of your care.</p>
+
+    <h3>Service Providers</h3>
+    <p>We work with trusted technology partners who help us operate the platform (hosting, infrastructure, security). All partners are contractually bound to protect your data and may not use it for any other purpose.</p>
+
+    <h3>Legal Requirements</h3>
+    <p>We may disclose your information if required by law, court order, or to protect the rights, property, or safety of HealthBridge, our users, or the public.</p>
+
+    <div class="callout green">
+      <span class="callout-icon">🛡️</span>
+      <div><strong>We do not sell, rent, or trade your personal or health information to any third party. Ever.</strong></div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="section" id="hipaa">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>HIPAA Compliance</h2>
+    </div>
+    <p>HealthBridge Universal is designed with HIPAA (Health Insurance Portability and Accountability Act) best practices. We implement all three required safeguard categories:</p>
+    <ul>
+      <li><strong>Administrative Safeguards</strong> — access controls, audit logs, workforce access policies</li>
+      <li><strong>Physical Safeguards</strong> — secure data center infrastructure with access restrictions</li>
+      <li><strong>Technical Safeguards</strong> — TLS 1.2+ encryption in transit, AES-256 at rest, role-based access, session timeouts</li>
+    </ul>
+    <p>Healthcare organizations may need to execute a <strong>Business Associate Agreement (BAA)</strong> for full HIPAA compliance. Contact <a href="mailto:hipaa@healthbridge.app" style="color:#1e40af;">hipaa@healthbridge.app</a> to request one.</p>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="section" id="security">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>Data Security</h2>
+    </div>
+    <ul>
+      <li>All data in transit is encrypted using <strong>TLS 1.2 or higher</strong></li>
+      <li>All data at rest is encrypted using <strong>AES-256</strong></li>
+      <li><strong>Role-based access control</strong> — users only see data they're authorized to access</li>
+      <li>Regular security reviews and vulnerability assessments</li>
+      <li>Secure authentication required for every session</li>
+    </ul>
+    <p>If you suspect unauthorized access, contact us immediately at <a href="mailto:security@healthbridge.app" style="color:#1e40af;">security@healthbridge.app</a>.</p>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="section" id="retention">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>Data Retention</h2>
+    </div>
+    <p>We retain your information for as long as your account is active, as necessary to provide the Service, or as required by applicable law. Medical records may be subject to statutory retention requirements.</p>
+    <p>When you delete your account, we will delete or anonymize your personal information within <strong>30 days</strong>, except where retention is legally required.</p>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="section" id="rights">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>Your Rights</h2>
+    </div>
+    <div class="rights-grid">
+      <div class="right-card">
+        <div class="right-icon">📋</div>
+        <h4>Access</h4>
+        <p>Request a copy of all personal data we hold about you</p>
+      </div>
+      <div class="right-card">
+        <div class="right-icon">✏️</div>
+        <h4>Correction</h4>
+        <p>Request correction of inaccurate or incomplete data</p>
+      </div>
+      <div class="right-card">
+        <div class="right-icon">🗑️</div>
+        <h4>Deletion</h4>
+        <p>Request deletion of your data (subject to legal retention)</p>
+      </div>
+      <div class="right-card">
+        <div class="right-icon">📦</div>
+        <h4>Portability</h4>
+        <p>Receive your data in a machine-readable format</p>
+      </div>
+      <div class="right-card">
+        <div class="right-icon">🚫</div>
+        <h4>Restriction</h4>
+        <p>Request that we limit how we process your data (GDPR)</p>
+      </div>
+      <div class="right-card">
+        <div class="right-icon">✋</div>
+        <h4>Objection</h4>
+        <p>Object to processing based on legitimate interests (GDPR)</p>
+      </div>
+    </div>
+    <p style="margin-top:16px;">To exercise any of these rights, email <a href="mailto:privacy@healthbridge.app" style="color:#1e40af;font-weight:600;">privacy@healthbridge.app</a>. We will respond within 30 days.</p>
+    <h3>California Residents (CCPA)</h3>
+    <p>You have the right to know what personal information is collected, whether it's sold (it isn't), and to request deletion. We do not discriminate against users who exercise their privacy rights.</p>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="section" id="children">
+    <div class="section-header">
+      <div class="section-num">9</div>
+      <h2>Children's Privacy</h2>
+    </div>
+    <p>HealthBridge Universal is not directed to children under 13. We do not knowingly collect personal information from children under 13. If you believe we have inadvertently collected such information, contact us immediately at <a href="mailto:privacy@healthbridge.app" style="color:#1e40af;">privacy@healthbridge.app</a> and we will delete it promptly.</p>
+  </div>
+
+  <!-- Section 10 -->
+  <div class="section" id="notifications">
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <h2>Push Notifications</h2>
+    </div>
+    <p>With your permission, we send push notifications for appointment reminders, new medical records, and important health updates from your care team. You can disable push notifications at any time in your device's Settings app.</p>
+  </div>
+
+  <!-- Section 11 -->
+  <div class="section" id="changes">
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <h2>Changes to This Policy</h2>
+    </div>
+    <p>When we update this policy, we will update the effective date, notify you via in-app notification or email for material changes, and obtain consent again if required by law. Continued use of the Service after changes constitutes acceptance.</p>
+  </div>
+
+  <!-- Section 12 -->
+  <div class="section" id="contact">
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <h2>Contact Us</h2>
+    </div>
+    <p>Questions, requests, or concerns about this Privacy Policy or your data:</p>
+    <div class="contact-card">
+      <p>📧 <strong>General Privacy:</strong> <a href="mailto:privacy@healthbridge.app">privacy@healthbridge.app</a></p>
+      <p>🔒 <strong>Security Issues:</strong> <a href="mailto:security@healthbridge.app">security@healthbridge.app</a></p>
+      <p>🏥 <strong>HIPAA / BAA Requests:</strong> <a href="mailto:hipaa@healthbridge.app">hipaa@healthbridge.app</a></p>
+      <p>🌐 <strong>Support:</strong> <a href="https://healthbridge.app/support">healthbridge.app/support</a></p>
+      <p style="margin-top:12px;font-size:13px;color:#475569;">Last reviewed and approved: <strong>May 30, 2026</strong></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 HealthBridge Universal · <a href="/privacy">Privacy Policy</a> · <a href="/support">Support</a></p>
+  <p style="margin-top:6px;">Built with care for underserved communities everywhere.</p>
+</footer>
+
+</body>
+</html>
