@@ -1,0 +1,8 @@
+node_modules/\ndist/\n.DS_Store\n*.p12\n*.mobileprovision
+node_modules/
+dist/
+.DS_Store
+*.p12
+*.mobileprovision
+ios/
+android/
