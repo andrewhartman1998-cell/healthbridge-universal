@@ -1,0 +1,100 @@
+name: Bridge to Stability — iOS Build & Submit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'bridge/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-submit:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ./bridge
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: bridge/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build web app
+        run: npx vite build
+
+      - name: Install Capacitor
+        run: |
+          npm install @capacitor/core @capacitor/ios @capacitor/cli
+          npx cap add ios || true
+          npx cap sync ios
+
+      - name: Set up signing certificate
+        run: |
+          echo "${{ secrets.BRIDGE_CERTIFICATE_BASE64 }}" | base64 --decode > certificate.p12
+          security create-keychain -p "${{ secrets.BRIDGE_KEYCHAIN_PASSWORD }}" bridge-build.keychain
+          security default-keychain -s bridge-build.keychain
+          security unlock-keychain -p "${{ secrets.BRIDGE_KEYCHAIN_PASSWORD }}" bridge-build.keychain
+          security import certificate.p12 -k bridge-build.keychain -P "${{ secrets.BRIDGE_CERTIFICATE_PASSWORD }}" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "${{ secrets.BRIDGE_KEYCHAIN_PASSWORD }}" bridge-build.keychain
+
+      - name: Install provisioning profile
+        run: |
+          echo "${{ secrets.BRIDGE_PROVISIONING_PROFILE_BASE64 }}" | base64 --decode > profile.mobileprovision
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+
+      - name: Build iOS archive
+        run: |
+          xcodebuild archive \
+            -workspace ios/App/App.xcworkspace \
+            -scheme App \
+            -archivePath build/BridgeToStability.xcarchive \
+            -configuration Release \
+            DEVELOPMENT_TEAM="${{ secrets.BRIDGE_APPLE_TEAM_ID }}" \
+            CODE_SIGN_STYLE=Manual \
+            | xcpretty
+
+      - name: Export IPA
+        run: |
+          cat > ExportOptions.plist << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store</string>
+            <key>teamID</key>
+            <string>${{ secrets.BRIDGE_APPLE_TEAM_ID }}</string>
+            <key>uploadBitcode</key>
+            <false/>
+            <key>uploadSymbols</key>
+            <true/>
+          </dict>
+          </plist>
+          EOF
+          xcodebuild -exportArchive \
+            -archivePath build/BridgeToStability.xcarchive \
+            -exportOptionsPlist ExportOptions.plist \
+            -exportPath build/export \
+            | xcpretty
+
+      - name: Submit to App Store Connect
+        run: |
+          xcrun altool --upload-app \
+            -f build/export/App.ipa \
+            -u "${{ secrets.BRIDGE_APPLE_ID }}" \
+            -p "${{ secrets.BRIDGE_APP_SPECIFIC_PASSWORD }}" \
+            --type ios
+
+      - name: Clean up keychain
+        if: always()
+        run: security delete-keychain bridge-build.keychain || true
