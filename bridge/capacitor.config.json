@@ -1,0 +1,21 @@
+{
+  "appId": "com.bridgetostability.app",
+  "appName": "Bridge to Stability",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#16a34a",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "LIGHT",
+      "backgroundColor": "#15803d"
+    }
+  },
+  "ios": {
+    "scheme": "Bridge to Stability",
+    "minVersion": "14.0"
+  }
+}
