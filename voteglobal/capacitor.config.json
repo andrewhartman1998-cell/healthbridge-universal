@@ -1,0 +1,16 @@
+{
+  "appId": "com.voiceofthepeople.global",
+  "appName": "VoiceOfThePeople Global",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#0f172a",
+      "showSpinner": false
+    }
+  }
+}
