@@ -1,0 +1,17 @@
+{
+  "appId": "com.grantbridge.nonprofits",
+  "appName": "GrantBridge",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "ios": {
+    "contentInset": "automatic",
+    "backgroundColor": "#f8f7ff"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 2000,
+      "backgroundColor": "#4f46e5",
+      "showSpinner": false
+    }
+  }
+}
