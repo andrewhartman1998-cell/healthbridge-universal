@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/healthbridge-universal/healthbridge/sw.js', { scope: '/healthbridge-universal/healthbridge/' })})}
