@@ -10,18 +10,22 @@
     <link rel="stylesheet" href="/healthbridge-universal/securevault/assets/index-cf18400f.css">
   
   <script>
-    // Handle GitHub Pages SPA redirect from 404.html
-    (function(l) {
-      if (l.search[1] === '/') {
-        var decoded = l.search.slice(1).split('&').map(function(s) {
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
-          l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
-  </script>
+(function() {
+  // Handle GitHub Pages 404 redirect from root 404.html
+  var query = window.location.search;
+  if (query && query.startsWith('?p=/')) {
+    var parts = query.slice(4).split('&q=');
+    var path  = '/' + parts[0];
+    var search = parts[1] ? '?' + parts[1] : '';
+    window.history.replaceState(null, null, path + search + window.location.hash);
+  }
+  // Handle securevault-local 404.html redirect
+  if (query && query.startsWith('?/')) {
+    var decoded = query.slice(1).split('&').map(function(s){ return s.replace(/~and~/g,'&'); }).join('?');
+    window.history.replaceState(null, null, window.location.pathname.slice(0,-1) + decoded + window.location.hash);
+  }
+})();
+</script>
   </head>
   <body>
     <div id="root"></div>

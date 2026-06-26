@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SecureMail</title>
+<script>
+// GitHub Pages SPA redirect trick
+// Preserves the full path and passes it to index.html via query string
+var pathSegmentsToKeep = 0;
+var l = window.location;
+l.replace(
+  l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+  l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?p=/' +
+  l.pathname.slice(1) +
+  (l.search ? '&q=' + l.search.slice(1) : '') +
+  l.hash
+);
+</script>
+</head>
+<body>Loading...</body>
+</html>
